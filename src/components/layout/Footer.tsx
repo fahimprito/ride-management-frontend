@@ -24,7 +24,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-muted-foreground transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Facebook</span>
 
@@ -43,7 +43,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-muted-foreground transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Instagram</span>
 
@@ -62,7 +62,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-muted-foreground transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Twitter</span>
 
@@ -79,7 +79,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-muted-foreground transition hover:opacity-75"
                                 >
                                     <span className="sr-only">GitHub</span>
 
@@ -98,7 +98,7 @@ const Footer = () => {
                                     href="#"
                                     rel="noreferrer"
                                     target="_blank"
-                                    className="text-gray-700 transition hover:opacity-75"
+                                    className="text-muted-foreground transition hover:opacity-75"
                                 >
                                     <span className="sr-only">Dribbble</span>
 
@@ -120,23 +120,23 @@ const Footer = () => {
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> 1on1 Coaching </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> 1on1 Coaching </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Company Review </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Company Review </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Accounts Review </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> HR Consulting </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> HR Consulting </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> SEO Optimisation </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> SEO Optimisation </a>
                                 </li>
                             </ul>
                         </div>
@@ -146,15 +146,15 @@ const Footer = () => {
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> About </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> About </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Meet the Team </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Meet the Team </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Accounts Review </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Accounts Review </a>
                                 </li>
                             </ul>
                         </div>
@@ -164,15 +164,15 @@ const Footer = () => {
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Contact </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Contact </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> FAQs </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> FAQs </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Live Chat </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Live Chat </a>
                                 </li>
                             </ul>
                         </div>
@@ -182,19 +182,19 @@ const Footer = () => {
 
                             <ul className="mt-6 space-y-4 text-sm">
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Accessibility </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Accessibility </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Returns Policy </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Returns Policy </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75"> Refund Policy </a>
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75"> Refund Policy </a>
                                 </li>
 
                                 <li>
-                                    <a href="#" className="text-gray-700 transition hover:opacity-75">
+                                    <a href="#" className="text-muted-foreground transition hover:opacity-75">
                                         Hiring-3 Statistics
                                     </a>
                                 </li>
