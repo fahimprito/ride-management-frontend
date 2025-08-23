@@ -1,12 +1,14 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import Password from "@/components/ui/password"
 import { z } from "zod"
 import { cn } from "@/lib/utils"
+import { useRegisterMutation } from "@/redux/features/auth/auth.api"
+import { toast } from "sonner"
 
 const registerSchema = z.object({
     name: z
@@ -30,6 +32,8 @@ export function RegisterForm({
     className,
     ...props
 }: React.ComponentProps<"div">) {
+    const [register] = useRegisterMutation();
+    const navigate = useNavigate();
 
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
@@ -49,6 +53,31 @@ export function RegisterForm({
             password: data.password,
         };
         console.log(userInfo);
+        try {
+            const result = await register(userInfo).unwrap();
+            // console.log(result);
+            toast.success(result.message || "User created successfully");
+            navigate("/login");
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } catch (error: any) {
+            console.error(error);
+            const backendMessage = error?.data?.message;
+
+            try {
+                const parsed = JSON.parse(backendMessage);
+
+                if (Array.isArray(parsed)) {
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    parsed.forEach((err: any) => {
+                        toast.error(err.message);
+                    });
+                } else {
+                    toast.error(backendMessage || "Something went wrong");
+                }
+            } catch {
+                toast.error(backendMessage || "Something went wrong");
+            }
+        }
 
     }
 
