@@ -12,18 +12,21 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { ModeToggle } from "./ModeToggler"
-import { Link } from "react-router"
+import { Link, useLocation } from "react-router"
 import { useState } from "react"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
-  { href: "#", label: "Home", active: true },
-  { href: "#", label: "Features" },
-  { href: "#", label: "Pricing" },
-  { href: "#", label: "About" },
-]
+  { href: "/", label: "Home", role: "PUBLIC" },
+  { href: "/about", label: "About", role: "PUBLIC" },
+  { href: "/features", label: "Features", role: "PUBLIC" },
+  { href: "/contact", label: "Contact", role: "PUBLIC" },
+  { href: "/faq", label: "FAQ", role: "PUBLIC" },
+];
 
 export default function Navbar() {
+  const location = useLocation()
+  const pathname = location.pathname
   const [user, setUser] = useState(false);
 
   const handleLogout = () => {
@@ -75,17 +78,20 @@ export default function Navbar() {
             <PopoverContent align="start" className="w-36 p-1 md:hidden">
               <NavigationMenu className="max-w-none *:w-full">
                 <NavigationMenuList className="flex-col items-start gap-0 md:gap-2">
-                  {navigationLinks.map((link, index) => (
-                    <NavigationMenuItem key={index} className="w-full">
-                      <NavigationMenuLink
-                        href={link.href}
-                        className="py-1.5"
-                        active={link.active}
-                      >
-                        {link.label}
-                      </NavigationMenuLink>
-                    </NavigationMenuItem>
-                  ))}
+                  {navigationLinks.map((link, index) => {
+                    const isActive = pathname === link.href
+                    const canShow = link.role === "PUBLIC";
+
+                    return canShow && (
+                      <NavigationMenuItem key={index} className="w-full">
+                        <NavigationMenuLink asChild
+                          className={`py-1.5 font-medium focus:text-primary hover:text-primary ${isActive ? "text-primary" : "text-muted-foreground"}`}
+                        >
+                          <Link to={link.href}>{link.label}</Link>
+                        </NavigationMenuLink>
+                      </NavigationMenuItem>
+                    )
+                  })}
                 </NavigationMenuList>
               </NavigationMenu>
             </PopoverContent>
@@ -98,17 +104,20 @@ export default function Navbar() {
             {/* Navigation menu */}
             <NavigationMenu className="max-md:hidden">
               <NavigationMenuList className="gap-2">
-                {navigationLinks.map((link, index) => (
-                  <NavigationMenuItem key={index}>
-                    <NavigationMenuLink
-                      active={link.active}
-                      href={link.href}
-                      className="text-muted-foreground hover:text-primary py-1.5 font-medium"
-                    >
-                      {link.label}
-                    </NavigationMenuLink>
-                  </NavigationMenuItem>
-                ))}
+                {navigationLinks.map((link, index) => {
+                  const isActive = pathname === link.href
+                  const canShow = link.role === "PUBLIC";
+
+                  return canShow && (
+                    <NavigationMenuItem key={index} className="w-full">
+                      <NavigationMenuLink asChild
+                        className={`py-1.5 font-medium focus:text-primary hover:text-primary ${isActive ? "text-primary" : "text-muted-foreground"}`}
+                      >
+                        <Link to={link.href}>{link.label}</Link>
+                      </NavigationMenuLink>
+                    </NavigationMenuItem>
+                  )
+                })}
               </NavigationMenuList>
             </NavigationMenu>
           </div>
