@@ -14,8 +14,7 @@ const Footer = () => {
                         </div>
 
                         <p className="mt-4 max-w-xs text-muted-foreground">
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Esse non cupiditate quae nam
-                            molestias.
+                            RideStation makes ride booking simple, safe, and fast. Enjoy seamless travel with reliable drivers and secure payments.
                         </p>
 
                         <ul className="mt-8 flex gap-6">
