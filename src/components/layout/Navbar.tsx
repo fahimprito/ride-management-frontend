@@ -15,6 +15,7 @@ import { ModeToggle } from "./ModeToggler"
 import { Link, useLocation } from "react-router"
 import { authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth.api"
 import { useAppDispatch } from "@/redux/hook"
+import Avatar from "../ui/avatar"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -129,8 +130,8 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <ModeToggle></ModeToggle>
           {(data?.data?.email) ? (
-            <div>
-
+            <div className="flex items-center gap-2">
+              <Avatar name={data?.data?.name} email={data?.data?.email}></Avatar>
               <Button
                 onClick={handleLogout}
                 variant="outline"
