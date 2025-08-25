@@ -38,6 +38,7 @@ export function LoginForm({
                 toast.success("Logged in successfully");
                 navigate("/");
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } catch (err: any) {
             console.error(err);
 

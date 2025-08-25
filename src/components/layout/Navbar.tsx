@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/popover"
 import { ModeToggle } from "./ModeToggler"
 import { Link, useLocation } from "react-router"
-import { useState } from "react"
+import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -27,7 +27,8 @@ const navigationLinks = [
 export default function Navbar() {
   const location = useLocation()
   const pathname = location.pathname
-  const [user, setUser] = useState(false);
+  const { data } = useUserInfoQuery(undefined);
+  console.log(data);
 
   const handleLogout = () => {
 
@@ -125,7 +126,7 @@ export default function Navbar() {
         {/* Right side */}
         <div className="flex items-center gap-2">
           <ModeToggle></ModeToggle>
-          {(user) ? (
+          {(data?.data?.email) ? (
             <Button
               onClick={handleLogout}
               variant="outline"
