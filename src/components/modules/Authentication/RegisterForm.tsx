@@ -9,8 +9,12 @@ import { z } from "zod"
 import { cn } from "@/lib/utils"
 import { useRegisterMutation } from "@/redux/features/auth/auth.api"
 import { toast } from "sonner"
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 const registerSchema = z.object({
+    role: z.enum(["RIDER", "DRIVER"], {
+        error: "Role is required",
+    }),
     name: z
         .string()
         .min(3, {
@@ -38,6 +42,7 @@ export function RegisterForm({
     const form = useForm<z.infer<typeof registerSchema>>({
         resolver: zodResolver(registerSchema),
         defaultValues: {
+            role: "RIDER",
             name: "",
             email: "",
             password: "",
@@ -48,6 +53,7 @@ export function RegisterForm({
     const onSubmit = async (data: z.infer<typeof registerSchema>) => {
         // console.log(data);
         const userInfo = {
+            role: data.role,
             name: data.name,
             email: data.email,
             password: data.password,
@@ -93,6 +99,36 @@ export function RegisterForm({
             <div className="grid gap-6">
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                        <FormField
+                            control={form.control}
+                            name="role"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Role</FormLabel>
+                                    <FormControl>
+                                        <Select
+                                            onValueChange={field.onChange}
+                                            defaultValue={field.value}
+                                        >
+                                            <SelectTrigger className="w-full">
+                                                <SelectValue placeholder="Select a Role" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectGroup>
+                                                    <SelectLabel>Role</SelectLabel>
+                                                    <SelectItem value="RIDER">RIDER</SelectItem>
+                                                    <SelectItem value="DRIVER">DRIVER</SelectItem>
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
+                                    </FormControl>
+                                    <FormDescription className="sr-only">
+                                        This is your public display name.
+                                    </FormDescription>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
                         <FormField
                             control={form.control}
                             name="name"
