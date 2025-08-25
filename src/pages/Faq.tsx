@@ -75,7 +75,7 @@ const Faq = ({
     items = faqItems,
 }) => {
     return (
-        <section className="py-32">
+        <section className="py-32 px-4">
             <div className="container mx-auto space-y-16">
                 <div className="mx-auto flex max-w-3xl flex-col text-left md:text-center">
                     <h2 className="mb-3 text-3xl font-semibold md:mb-4 lg:mb-6 lg:text-4xl">

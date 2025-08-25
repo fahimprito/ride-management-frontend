@@ -47,7 +47,7 @@ const About = ({
     team = defaultTeam,
 }: AboutPageProps = {}) => {
     return (
-        <section className="py-24">
+        <section className="py-24 px-4">
             <div className="container mx-auto">
                 <div className="mb-16 text-center">
                     <h1 className="text-5xl font-semibold">{title}</h1>

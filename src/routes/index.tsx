@@ -6,6 +6,7 @@ import Feature from "@/pages/Feature";
 import Homepage from "@/pages/Homepage";
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
+import UserStatus from "@/pages/UserStatus";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -42,5 +43,9 @@ export const router = createBrowserRouter([
     {
         Component: Register,
         path: "/register",
+    },
+    {
+        Component: UserStatus,
+        path: "/user-status",
     },
 ])

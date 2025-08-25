@@ -1,12 +1,14 @@
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Link } from "react-router"
+import { Link, useNavigate } from "react-router"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useForm } from "react-hook-form"
 import Password from "@/components/ui/password"
 import z from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useLoginMutation } from "@/redux/features/auth/auth.api"
+import { toast } from "sonner"
 
 const loginSchema = z.object({
     email: z.email({ message: "Valid email is required" }),
@@ -17,6 +19,8 @@ export function LoginForm({
     className,
     ...props
 }: React.ComponentProps<"div">) {
+    const [login] = useLoginMutation();
+    const navigate = useNavigate();
     const form = useForm<z.infer<typeof loginSchema>>({
         resolver: zodResolver(loginSchema),
         defaultValues: {
@@ -27,6 +31,28 @@ export function LoginForm({
 
     const onSubmit = async (data: z.infer<typeof loginSchema>) => {
         console.log(data);
+        try {
+            const res = await login(data).unwrap();
+            console.log(res);
+            if (res.success) {
+                toast.success("Logged in successfully");
+                navigate("/");
+            }
+        } catch (err: any) {
+            console.error(err);
+
+            if (err?.data?.message) {
+                toast.error(err.data.message);
+
+                if (
+                    err.data.message.includes("deleted") ||
+                    err.data.message.includes("blocked") ||
+                    err.data.message.includes("suspended")
+                ) {
+                    navigate("/user-status", { state: { email: data.email, status: err.data.message } });
+                }
+            }
+        }
 
     };
 

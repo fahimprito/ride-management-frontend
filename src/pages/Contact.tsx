@@ -19,7 +19,7 @@ const Contact = ({
     web = { label: "fahimprito.com", url: "https://github.com/fahimprito" },
 }: ContactProps) => {
     return (
-        <section className="py-32">
+        <section className="py-32 px-4">
             <div className="container mx-auto">
                 <div className="mx-auto flex max-w-7xl flex-col justify-between gap-10 lg:flex-row lg:gap-20">
                     <div className="mx-auto flex max-w-sm flex-col justify-between gap-10">
